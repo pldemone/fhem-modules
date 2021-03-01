@@ -520,9 +520,7 @@ sub Text2Speech_Set($@)
     return $r;
   }
 
-  if($cmd ne "tts") {
-    return "$cmd needs $sets{$cmd} parameter(s)" if(@a-$sets{$cmd} != 0);
-  }
+  return "$cmd needs $sets{$cmd} parameter(s)" if(@a-$sets{$cmd} != 0);
 
   # Abbruch falls Disabled
   return "no set cmd on a disabled device !" if(IsDisabled($me));
