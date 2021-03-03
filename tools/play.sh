@@ -42,6 +42,15 @@ which avahi-browse >/dev/null 2>&1 || { echo "avahi-browse required but not foun
 ### Nothing to change
 infile=$1
 playhost=$2
+
+if [ "$infile" == "" ]; then
+	echo ERROR
+	echo Script requires arguments
+	echo "           $0 AUDIOFILE [HOST]"
+	echo Exit
+	exit 1
+fi
+
 if [ "$playhost" == "" ]; then
 	playhost=$defhost;
 fi
