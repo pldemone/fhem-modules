@@ -15,8 +15,6 @@
 # ALL     ALL = NOPASSWD: /usr/bin/mplayer
 ##############################################
 
-# VoiceRSS: http://www.voicerss.org/api/documentation.aspx
-
 package main;
 use strict;
 use warnings;
@@ -240,37 +238,37 @@ sub Text2Speech_loadmodules($$) {
     require IO::File;
     IO::File->import;
     1;
-  } or return "IO::File Module not installed, please install";
+  } or return "IO::File Module not installed. Please install.";
 
   eval {
     require Digest::MD5;
     Digest::MD5->import;
     1;
-  } or return "Digest::MD5 Module not installed, please install";
+  } or return "Digest::MD5 Module not installed. Please install.";
 
   eval {
     require URI::Escape;
     URI::Escape->import;
     1;
-  } or return "URI::Escape Module not installed, please install";
+  } or return "URI::Escape Module not installed. Please install.";
 
   eval {
     require Text::Iconv;
     Text::Iconv->import;
     1;
-  } or return "Text::Iconv Module not installed, please install";
+  } or return "Text::Iconv Module not installed. Please install.";
 
   eval {
     require Encode::Guess;
     Encode::Guess->import;
     1;
-  } or return "Encode::Guess Module not installed, please install";
+  } or return "Encode::Guess Module not installed. Please install.";
 
   eval {
     require MP3::Info;
     MP3::Info->import;
     1;
-  } or return "MP3::Info Module not installed, please install";
+  } or return "MP3::Info Module not installed. Please install.";
 
   if ($TTS_Ressource eq "Amazon-Polly") {
     # Module werden nur benötigt mit der Polly Engine
@@ -278,7 +276,7 @@ sub Text2Speech_loadmodules($$) {
       require Paws::Polly;
       Paws::Polly->import;
       1;
-    } or return "Paws Module not installed. Please install, goto https://metacpan.org/source/JLMARTIN/Paws-0.39";
+    } or return "Paws Module not installed. Please install.";
 
     eval {
       require File::HomeDir;
