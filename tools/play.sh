@@ -30,7 +30,7 @@ defhost="office"
 
 # Preset system definitions. If a system is not found in the list,
 # the script searches via DNS for the IP address and the avahi port
-declare -A SYSTEMS=( ["office"]="192.168.0.130:7000" ["child"]="192.168.0.131:7000" ["child"]="VSX-527.local")
+declare -A SYSTEMS=( ["office"]="192.168.0.130:7000" ["child"]="192.168.0.131:7000" ["hifi"]="VSX-527.local")
 
 # Nothing to change
 
@@ -40,6 +40,7 @@ which raop_play >/dev/null 2>&1 || { echo "ffmpeg required but not found. Aborti
 which avahi-browse >/dev/null 2>&1 || { echo "avahi-browse required but not found. Aborting." >&2; exit 1; }
 
 ### Nothing to change
+#############################################################
 infile=$1
 playhost=$2
 
@@ -75,9 +76,14 @@ if [ ! -e "${dirname}/${filename}.wav" ]; then
 		rm -f $tfile
 	else
 	# Play plain without any modification
-		ffmpeg_in="-i '${infile}'"
+		ffmpeg_in="-i ${infile}"
 		ffmpeg ${ffmpeg_in} ${ffmpeg_ops} -vn -ac 2 -ar 44100 -acodec pcm_s16le -f s16le "${dirname}/${filename}.wav"
 	fi
+fi
+
+if [ ! -e "${dirname}/${filename}.wav" ]; then
+	echo ERROR: Could not find ${filename}.wav
+	exit 1
 fi
 
 for element in "${HOSTS[@]}"; do
