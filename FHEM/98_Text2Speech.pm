@@ -1225,8 +1225,8 @@ sub Text2Speech_WriteStats($$$$){
 
 =pod
 =item helper
-=item summary    speaks given text via loudspeaker
-=item summary_DE wandelt Text in Sprache um zur Ausgabe auf Lautsprecher
+=item summary    A module that converts text to speech and also plays the result on a local or remote loudspeaker
+=item summary_DE Modul, das Text in Sprache umwandelt und das Ergebnis über einen lokalen oder entfernten Lautsprecher wiedergibt
 =begin html
 
 <a name="Text2Speech"></a>
@@ -1241,20 +1241,22 @@ sub Text2Speech_WriteStats($$$$){
     <b>Server: </b><code>define &lt;name&gt; Text2Speech none</code><br>
     <p>
     This module converts any text into speech with several possible providers. The Device can be defined as locally
-    or remote device.
+    or remote instance.
     </p>
 
     <li>
       <b>Local Device</b><br>
       <ul>
-        The output will be sent to any connected audio device. For example external speakers connected per jack
-        or with Bluetooth speakers - connected per Bluetooth dongle. It's important to install mplayer.<br>
+        The output will be sent to any connected audio device. For example speakers connected per jack,
+        network, WiFI or Bluetooth. Playback can be done using MPlayer or any other application.<br>
+        <br>
+        Mplayer installation under Debian/Ubuntu/Raspbian:<br>
         <code>apt-get install mplayer</code><br>
         The given alsa device has to be configured in <code>/etc/asound.conf</code>
         <p>
           <b>Special AlsaDevice: </b><i>default</i><br>
-          The internal mplayer command will be without any audio directive if the given alsa device is <i>default</i>.
-          In this case mplayer is using the standard audio device.
+          The internal Mplayer command will be without any audio directive if the given alsa device is <i>default</i>.
+          In this case Mplayer is using the standard audio device.
         </p>
         <p>
           <b>Example:</b><br>
@@ -1267,7 +1269,7 @@ sub Text2Speech_WriteStats($$$$){
     <li>
       <b>Remote Device</b><br>
       <ul>
-        This module can be configured as remote-device for client-server Environments. The Client has to be configured
+        This module can be configured as remote-device for client-server environments. The Client has to be configured
         as local device.<br>
         Notice: the Name of the locally instance has to be the same!
         <ul>
@@ -1288,7 +1290,7 @@ sub Text2Speech_WriteStats($$$$){
     <li>
       <b>Server Device</b>
       <ul>
-        In case of an usage as a Server, only the mp3 file will be generated and displayed as lastFilename reading. It makes no sense to use the attribute <i>TTS_speakAsFastAsPossible</i> here.
+        In case of an usage as a server, only the mp3 file will be generated and displayed as lastFilename reading. It makes no sense to use the attribute <i>TTS_speakAsFastAsPossible</i> here.
         Its recommend, to use the attribute <i>TTS_useMP3Wrap</i>. Otherwise only the last audiobrick will be shown in reading <i>lastFilename</i>.
       </ul>
       <p>
