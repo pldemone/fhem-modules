@@ -1326,9 +1326,9 @@ sub Text2Speech_WriteStats($$$$){
 <b>Attributes</b>
 <ul>
   <li>TTS_Delimiter<br>
-    Optional: By using the google engine, its not possible to convert more than 100 characters in a single audio brick.
-    With a Delimiter the audio brick will be split at this character. A Delimiter must be a single character.!<br>
-    By default, ech audio brick will be split at sentence end. Is a single sentence longer than 100 characters,
+    Optional: By using the Google engine, its not possible to convert more than 100 characters in a single audio brick.
+    With a delimiter the audio brick will be split at this character. A delimiter must be a single character!<br>
+    By default, each audio brick will be split at sentence end. Is a single sentence longer than 100 characters,
     the sentence will be split additionally at comma, semicolon and the word <i>and</i>.<br>
     Notice: Only available in locally instances with Google engine!
   </li>
@@ -1338,21 +1338,20 @@ sub Text2Speech_WriteStats($$$$){
     Notice: Only available in locally instances!
     <ul>
       <li>Google<br>
-        Using the Google Engine. It´s nessessary to have internet access. This engine is the recommend engine
-        because the quality is fantastic. This engine is using by default.
+        Google Engine. Prerequisite: Active Internet connection<br>
+        This engine is recommended for its quality and is used by default.
       </li>
       <li>VoiceRSS<br>
-        Using the VoiceRSS Engine. Its a free engine till 350 requests per day. If you need more, you have to pay.
-        It´s nessessary to have internet access. This engine is the 2nd recommend engine
-        because the quality is also fantastic. To use this engine you need an APIKey (see TTS_APIKey)
+        VoiceRSS Engine. Prerequisite: Active Internet connection<br>
+        Free of charge up to 350 requests per day. If you need more, you have to pay.
+        This engine is also recommended due to its quality. To use this engine, you need an APIKey (see TTS_APIKey)
       </li>
       <li>ESpeak<br>
-        Using the ESpeak Engine. Installation Espeak and lame is required.<br>
-        <code>apt-get install espeak lame</code>
+        eSpeak Engine. Prerequisite: Installation of Espeak and lame<br>
+        eSpeak is an open source software speech synthesizer for English and other languages.
       </li>
 	  <li>SVOX-pico<br>
-        Using the SVOX-Pico TTS-Engine (from the AOSP).<br>
-        Installation of the engine and <code>lame</code> is required:<br>
+        SVOX-Pico TTS-Engine (from the AOSP). Prerequisite: Installation of SVOX-Pico and lame<br>
         <code>sudo apt-get install libttspico-utils lame</code><br><br>
         On ARM/Raspbian the package <code>libttspico-utils</code>,<br>
         so you may have to compile it yourself or use the precompiled package from <a target="_blank" href"http://www.robotnet.de/2014/03/20/sprich-freund-und-tritt-ein-sprachausgabe-fur-den-rasberry-pi/">this guide</a>, in short:<br>
@@ -1362,8 +1361,8 @@ sub Text2Speech_WriteStats($$$$){
         <code>sudo dpkg --install pico2wave.deb</code>
       </li>
       <li>Amazon-Polly<br>
-       Using the Amazon Polly engine, the same as Amazon Alexa.<br>
-       The perl package Paws is required. An AWS Access and Polly Aws User is required too<br>
+       Amazon Polly Engine. Prerequisite: Active Internet connection, Perl package Paws<br>
+       Amazon service that turns text into lifelike speech. An AWS Access and Polly Aws User is required.<br>
        <code>cpan paws</code><br>
        The credentials to your AWS Polly are expected at ~/.aws/credentials<br>
        <code>[default]
@@ -1380,38 +1379,37 @@ sub Text2Speech_WriteStats($$$$){
 
   <li>TTS_Language_Custom<br>
     If you want another engine and speech of default languages, you can insert this here.<br>
-    The definition is dependent of used engine. This attribute overrides an TTS_Language attribute.<br>
-    Please refer the specific API reference.
+    The definition depends on the used engine. This attribute overrides an TTS_Language attribute.<br>
+    Please refer to the specific API reference.
   </li>
 
   <li>TTS_APIKey<br>
     An APIKey is needed if you want to use VoiceRSS. You have to register at the following page:<br>
-    http://www.voicerss.org/registration.aspx <br>
-    After this, you will get your personal APIKey.
+    http://www.voicerss.org/registration.aspx
   </li>
 
   <li>TTS_User<br>
-    Actual without any usage. Needed in case if a TTS Engine needs a username and an apikey for each request.
+    Actual without any usage. Needed in case if a TTS Engine needs a username and an APIKey for a request.
   </li>
 
   <li>TTS_CacheFileDir<br>
-    Optional: The downloaded Google audio bricks are saved in this folder for reusing.
-    No automatically implemented deleting are available.<br>
+    Optional: The downloaded Google audio bricks are saved in this folder.
+    No automatic delete/cleanup available.<br>
     Default: <i>cache/</i><br>
-    Notice: Only available in locally instances!
+    Notice: Available on local instances only!
   </li>
 
   <li>TTS_UseMP3Wrap<br>
     For best voice output, it is recommended that the individual downloads are combined into a single file.
-    Each downloaded audio bricks are concatinated to a single audio file to play with mplayer.<br>
-    Installtion of the mp3wrap source is required.<br>
+    Each downloaded audio bricks are concatinated to a single audio file to play with Mplayer.<br>
+    Installtion of the mp3wrap package is required.<br>
     <code>apt-get install mp3wrap</code><br>
-    Notice: Only available in locally instances!
+    Notice: Available on local instances only!
   </li>
 
   <li>TTS_MplayerCall<br>
-    Optional: Definition of the system call to Mplayer or a different tool. <br>
-    If a tool other than mplayer is used, the following templates apply:<br>
+    Optional: Definition of the system call to Mplayer or a different tool.<br>
+    If a tool other than Mplayer is used, the following templates apply:<br>
     <ul>
         <li>{device}</li>
         <li>{volume}</li>
@@ -1419,7 +1417,8 @@ sub Text2Speech_WriteStats($$$$){
         <li>{file}</li>
         <li>{options}</li>
     </ul>
-    {options} are set as text in parentheses when calling set. Used for example to set special parameters for each call separately<br>
+    {options} are provided inside the text in parentheses during the set command.
+    Used for example to set special parameters for each call separately<br>
     Example: <code>set myTTS tts [192.168.0.1:7000] This is my text</code><br><br>
 
     Examples:<br>
@@ -1431,7 +1430,7 @@ sub Text2Speech_WriteStats($$$$){
 
   <li>TTS_SentenceAppendix<br>
     Optional: Definition of one mp3-file to append each time of audio response.<br>
-    Using of Mp3Wrap is required. The audio bricks has to be downloaded before into CacheFileDir.
+    Mp3Wrap is required. The audio chunks must be downloaded to the CacheFileDir beforehand.
     Example: <code>silence.mp3</code>
   </li>
 
@@ -1450,19 +1449,21 @@ sub Text2Speech_WriteStats($$$$){
   </li>
 
   <li>TTS_VolumeAdjust<br>
-    Basic volume increase.
+    Basic volume increase<br>
     Default: 110<br>
-    <code>attr myTTS TTS_VolumeAdjust 400</code><br>
+    <code>attr myTTS TTS_VolumeAdjust 400</code>
   </li>
 
   <li>TTS_noStatisticsLog<br>
     If set to <b>1</b>, it prevents logging statistics to DbLog Devices, default is <b>0</b><br>
-    But please note: This logging is important to be able to delete longer unused cache files. If you disable this, take care to cleanup your cachedirectory by yourself.
+    Note: This logging is important to be able to delete cache files that have not been used for a longer period of time.
+    If you disable this, you will have to clean your cache directory manually.
   </li>
 
   <li>TTS_speakAsFastAsPossible<br>
-      Trying to get a speech as fast as possible. In case of not present audio bricks, you can hear a short break as the audio brick will be downloaded at this time. In case of a presentation of all audio bricks at local cache,
-      this attribute has no impact.<br>
+      Trying to get a speech as fast as possible. In case of not present audio bricks, you can
+      hear a short break as the audio brick will be downloaded at this time.
+      In case of a presentation of all audio bricks at local cache, this attribute has no impact.<br>
       Attribute is only valid on local or server instances.
   </li>
 
