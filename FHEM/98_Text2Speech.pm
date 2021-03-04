@@ -7,6 +7,9 @@
 # written by Tobias Faust 2013-10-23
 # e-mail: tobias dot faust at gmx dot net
 #
+# Modifications by Mirko Lindner 2021-03-01
+# e-mail: demon@pro-linux.de
+#
 ##############################################
 
 ##############################################
