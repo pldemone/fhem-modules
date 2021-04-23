@@ -64,7 +64,6 @@ if [ "$infile" == "" ]; then
 	echo Exit
 	exit 1
 fi
-clear
 
 if [ "$playhost" == "" ]; then
 	playhost=$defhost;
