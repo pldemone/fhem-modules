@@ -2,7 +2,7 @@
 
 #
 # Wrapper script for sending audio data via AirPlay/AirPlay2 to one or more devices.
-# This script should be called from FHEM and requires a modified version of 98_Text2Speech.pm
+# This script should be called from FHEM
 #
 # Definition in FHEM:
 #	defmod myTTS Text2Speech hw=1.0
