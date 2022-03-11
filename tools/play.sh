@@ -49,10 +49,10 @@ declare -A SYSTEMS=( ["office"]="192.168.0.130:7000" ["child"]="192.168.0.131:70
 #############################################################
 
 # Check tools
-which ffmpeg >/dev/null 2>&1 || { echo "ffmpeg required but not found. Aborting." >&2; exit 1; }
-which raop_play >/dev/null 2>&1 || { echo "ffmpeg required but not found. Aborting." >&2; exit 1; }
-which avahi-browse >/dev/null 2>&1 || { echo "avahi-browse required but not found. Aborting." >&2; exit 1; }
-if [ ! -e /opt/fhem/fhem.pl ]; then echo "/opt/fhem/fhem.pl required but not found. Aborting."; fi
+which ffmpeg >/dev/null 2>&1 || { echo "ffmpeg required but not found. Abort." >&2; exit 1; }
+which raop_play >/dev/null 2>&1 || { echo "raop_play required but not found. Abort." >&2; exit 1; }
+which avahi-browse >/dev/null 2>&1 || { echo "avahi-browse required but not found. Abort." >&2; exit 1; }
+if [ ! -e /opt/fhem/fhem.pl ]; then echo "/opt/fhem/fhem.pl required but not found. Abort."; fi
 
 infile=$1
 playhost=$2
@@ -149,7 +149,7 @@ for element in "${HOSTS[@]}"; do
 				raop_play $ipaddr -w 200 -v 50 -p $port -d 0 "${dirname}/${filename}.wav" 
 			fi
 		else
-			echo ${host} not found - neither as definistion in script nor as DNS entry
+			echo ${host} not found - neither as definition in script nor as DNS entry
 			exit 1
 		fi
 	fi
